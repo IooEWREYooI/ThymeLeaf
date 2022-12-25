@@ -1,0 +1,80 @@
+<!--
+
+||    EWREY ORG.  ||
+|| @oolllEWREYllloo ||
+
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head background="">
+	<meta charset="utf-8">
+	<link rel="icon" th:href="@{css/photos/favicon.jpg}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/main.css}"/>
+	<title>EWREY.SITE</title>
+</head>
+<body>
+<script type="text/javascript">
+	if (screen.width <= 480 ) {
+		location.href = 'main_mobile';
+	}
+</script>
+<div class="logo">EWREY<span>.</span>SITE</div>
+<div>
+	<table class="table_dark" th:style="${table_dark_animation}">
+		<tr>
+			<th>Hello, dear traveler, read the useful links<span class="_">_</span></th>
+		</tr>
+		<tr>
+			<td>
+				<a class="button" onclick="about_me()">About me</a>
+				<script th:src="@{JS/showBlock.js}"></script>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a class="button" onclick="portfolio()">Portfolio</a>
+				<script th:src="@{JS/showBlock.js}"></script>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a class="button" onclick="resume()">Summary</a>
+				<script th:src="@{JS/showBlock.js}"></script>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="about_me" style="display: none;">
+	<table class="blank_table">
+		<tr>
+			<th>
+				<div>
+					<img th:src="@{css/photos/Face.jpg}" alt="face">
+				</div>
+				<br>My name is Yakov, I'm a Java developer.</br>
+			</th>
+		</tr>
+		<tr>
+			<td th:utext="${about_me}"></td>
+		</tr>
+	</table>
+</div>
+<div id="portfolio" th:style="${portfolioDisplay}">
+	<table class="blank_table" style="animation: none;">
+		<th th:field="${numOfElement}">
+            <form action="" method="post">
+                <button name="portfolio" th:value="'blockPlus_'+${numOfElement}" th:if="${numOfElement} < ${listSize}"><strong>NEXT</strong></button>
+            </form>
+		</th>
+		<tr>
+			<td th:utext="${listOfProjects[numOfElement]}"></td>
+		</tr>
+	</table>
+</div>
+<div id="resume" style="display: none;">
+	<table class="blank_table">
+		<th>Not enable yet, please check later</th>
+	</table>
+</div>
+</body>
+</html>
